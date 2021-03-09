@@ -1,0 +1,16 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string stopCommand = "Введите команду";
+            while (stopCommand != "exit" )
+            {
+                stopCommand = Console.ReadLine();
+            }
+        }
+    }
+}
