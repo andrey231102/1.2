@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = "pizza";
+            string userInput;
+            int inputTries = 3;
+            for (int i = 0; i < inputTries; i++)
+            {
+                Console.WriteLine("Введите пароль");
+                userInput  = Console.ReadLine();
+                if (userInput == password )
+                {
+                    Console.WriteLine("Хозяин, добро пожаловать в систему");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Осталось " + (inputTries- i - 1) + " попыток");
+                }
+
+                if (i==inputTries-1)
+                {
+                    Console.WriteLine("Лови бан");
+                    break;
+                }
+            }
+        }
+    }
+}
