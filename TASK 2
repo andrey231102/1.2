@@ -6,17 +6,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string userInput= Console.ReadLine();
-            while (userInput != "exit" )
+            string userInput = Console.ReadLine();
+            while (userInput != "exit")
             {
                 Console.WriteLine("Ваша команда - " + userInput);
                 userInput = Console.ReadLine();
             }
-
-            if (userInput == "exit")
-            {
-                Console.WriteLine("Вы вышли из приложения");
-            }
+            
         }
     }
 }
