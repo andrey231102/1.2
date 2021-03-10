@@ -6,10 +6,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string stopCommand = "Введите команду";
-            while (stopCommand != "exit" )
+            string userInput = "Введите команду";
+            while (userInput != "exit" )
             {
-                stopCommand = Console.ReadLine();
+                userInput = Console.ReadLine();
             }
         }
     }
