@@ -1,0 +1,74 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string userName;
+            string consoleColor;
+            string userPassword;
+            string passwordConfirm;
+            Console.WriteLine("Напишите в консоль нужную вам из предоставленных команд");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("SetName – установить имя");
+            Console.WriteLine("ChangeConsoleColor- изменить цвет консоли");
+            Console.WriteLine("SetPassword – установить пароль;");
+            Console.WriteLine("WriteName – вывести имя (после ввода пароля)");
+            Console.WriteLine("Esc – выход из программы");
+
+            string userInput = Console.ReadLine();
+
+            switch (userInput)
+            {
+                case "SetName":
+                    Console.WriteLine("Введите свое имя");
+                    userName = Console.ReadLine();
+                    Console.WriteLine($"Привет, {userName}") ;
+                    break;
+                case "ChangeConsoleColor":
+                    Console.WriteLine("Укажите номер одного из нужного(или тот который вам макисмально нравиться) вам цветов для консоли");
+                    Console.WriteLine("1.Желтый. 2. Зеленый. 3.Красный 4.Синий ");
+                    consoleColor = Console.ReadLine();
+                    switch (consoleColor)
+                    {
+                        case "1":
+                            Console.BackgroundColor = ConsoleColor.Yellow;
+                            break;
+                        case "2":
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            break;
+                        case "3":
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            break;
+                        case "4":
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        default:
+                            Console.WriteLine("Вы указали номер неизвестного цвета либо попытались оскорбить разработчика =)");
+                            break;
+                    }
+                    break;
+                case "SetPassword":
+                    Console.WriteLine("Вводите пароль");
+                    userPassword = Console.ReadLine();
+                    Console.WriteLine("Пароль сохранен, не забудьте его");
+                    break;
+                case "WriteName":
+                    Console.WriteLine("Для подтверждения действия введите пароль");
+                    passwordConfirm = Console.ReadLine();
+                    if ()//как мне задать условие: Если у userName есть значение, то....
+                    {
+
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+    }
+}
