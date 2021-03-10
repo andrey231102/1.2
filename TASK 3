@@ -6,107 +6,144 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            string wayOfConvertation;
             float convertValue;
-            int dollarToRubs = 50;
-            int hryvnaToRubs = 3;
-            int dollarToHryvnas = 27;
-            while (true)
-            {
-                Console.WriteLine("Сколькго у вас рублей");
-                float myRubs = Convert.ToSingle(Console.ReadLine());
-                Console.WriteLine("Сколько у вас долларов");
-                float myDollars = Convert.ToSingle(Console.ReadLine());
-                Console.WriteLine("Сколько у вас гривен");
-                float myHryvnas = Convert.ToSingle(Console.ReadLine());
+            int USDtoRUB = 50;
+            int UAHtoRUB = 3;
+            int USDtoUAH = 27;
 
+            Console.WriteLine("Сколькго у вас рублей");
+            float myRUB = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Сколько у вас долларов");
+            float myUSD = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Сколько у вас гривен");
+            float myUAH = Convert.ToSingle(Console.ReadLine());
+
+
+
+
+
+            do
+            {
                 Console.WriteLine("Нажмите 1 чтобы перевести рубли в доллары");
                 Console.WriteLine("Нажмите 2 чтобы перевести доллары в рубли");
                 Console.WriteLine("Нажмите 3 чтобы перевести рубли в гривны");
                 Console.WriteLine("Нажмите 4 чтобы перевести гривны в рубли");
                 Console.WriteLine("Нажмите 5 чтобы перевести гривны в доллары");
                 Console.WriteLine("Нажмите 6 чтобы перевести доллары в гривны");
+                Console.WriteLine("Напечатайте exit чтобы выйти из программы");
 
-                string wayOfConvertation = Console.ReadLine();
 
-                switch (wayOfConvertation)
+                wayOfConvertation = Console.ReadLine();
+                if (wayOfConvertation == "exit")
                 {
-                    case "1":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myRubs)
-                        {
-                            Console.WriteLine("У вас слишком мало рублей для конвертации");
+                    Console.WriteLine("Вы покинули приложение");
+                }
+                else
+                {
+                    switch (wayOfConvertation)
+                    {
+
+                        case "1":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myRUB)
+                            {
+                                Console.WriteLine("У вас слишком мало рублей для конвертации");
+
+                            }
+                            else
+                            {
+                                myRUB -= convertValue;
+                                myUSD += convertValue / USDtoRUB;
+
+                            }
                             break;
-                        }
-                        myRubs -= convertValue;
-                        myDollars += convertValue / dollarToRubs;
-                        break;
-                    case "2":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myDollars)
-                        {
-                            Console.WriteLine("У вас слишком мало долларов для конвертации");
+                        case "2":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myUSD)
+                            {
+                                Console.WriteLine("У вас слишком мало долларов для конвертации");
+
+                            }
+                            else
+                            {
+                                myUSD -= convertValue;
+                                myRUB += convertValue * USDtoRUB;
+                            }
                             break;
-                        }
-                        myDollars -= convertValue;
-                        myRubs += convertValue * dollarToRubs;
-                        break;
-                    case "3":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myRubs)
-                        {
-                            Console.WriteLine("У вас слишком мало рублей для конвертации");
+                        case "3":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myRUB)
+                            {
+                                Console.WriteLine("У вас слишком мало рублей для конвертации");
+
+                            }
+                            else
+                            {
+                                myRUB -= convertValue;
+                                myUAH += convertValue / UAHtoRUB;
+                            }
                             break;
-                        }
-                        myRubs -= convertValue;
-                        myHryvnas += convertValue / hryvnaToRubs;
-                        break;
-                    case "4":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myHryvnas)
-                        {
-                            Console.WriteLine("У вас слишком мало гривен для конвертации");
+                        case "4":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myUAH)
+                            {
+                                Console.WriteLine("У вас слишком мало гривен для конвертации");
+
+                            }
+                            else
+                            {
+                                myUAH -= convertValue;
+                                myRUB += convertValue * UAHtoRUB;
+                            }
                             break;
-                        }
-                        myHryvnas -= convertValue;
-                        myRubs += convertValue * hryvnaToRubs;
-                        break;
-                    case "5":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myHryvnas)
-                        {
-                            Console.WriteLine("У вас слишком мало гривен для конвертации");
+                        case "5":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myUAH)
+                            {
+                                Console.WriteLine("У вас слишком мало гривен для конвертации");
+
+                            }
+                            else
+                            {
+                                myUAH -= convertValue;
+                                myUSD += convertValue / USDtoUAH;
+                            }
                             break;
-                        }
-                        myHryvnas -= convertValue;
-                        myDollars += convertValue / dollarToHryvnas;
-                        break;
-                    case "6":
-                        Console.WriteLine("Сколько вы хотите перевести");
-                        convertValue = Convert.ToInt32(Console.ReadLine());
-                        if (convertValue > myDollars)
-                        {
-                            Console.WriteLine("У вас слишком мало долларов для конвертации");
+                        case "6":
+                            Console.WriteLine("Сколько вы хотите перевести");
+                            convertValue = Convert.ToInt32(Console.ReadLine());
+                            if (convertValue > myUSD)
+                            {
+                                Console.WriteLine("У вас слишком мало долларов для конвертации");
+                                break;
+                            }
+                            else
+                            {
+                                myUSD -= convertValue;
+                                myUAH += convertValue * USDtoUAH;
+                            }
                             break;
-                        }
-                        myDollars -= convertValue;
-                        myHryvnas += convertValue * dollarToHryvnas;
-                        break;
-                    default:
-                        Console.WriteLine("Вы выбрали хотите переводить что-то не то :) ");
-                        break;
+
+
+                        default:
+                            Console.WriteLine("Вы выбрали хотите переводить что-то не то :) ");
+                            break;
+
+                    }
+                    Console.WriteLine($"На ваших кошельках отсалось: {myRUB} рублей, {myUSD} долларов, {myUAH} гривен.");
+                    Console.ReadLine();
                 }
 
-                Console.WriteLine($"На ваших кошельках отсалось: {myRubs} рублей, {myDollars} долларов, {myHryvnas} гривен.");
-                Console.ReadLine();
-                Console.Clear();
-            }
-            
 
+            }
+            while (wayOfConvertation != "exit");
+            
 
         }
     }
