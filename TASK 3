@@ -8,9 +8,9 @@ namespace ConsoleApp1
         {
             string wayOfConvertation;
             float convertValue;
-            int USDtoRUB = 50;
-            int UAHtoRUB = 3;
-            int USDtoUAH = 27;
+            int usdToRub = 50;
+            int uahToRub = 3;
+            int usdToUah = 27;
 
             Console.WriteLine("Сколькго у вас рублей");
             float myRUB = Convert.ToSingle(Console.ReadLine());
@@ -18,10 +18,6 @@ namespace ConsoleApp1
             float myUSD = Convert.ToSingle(Console.ReadLine());
             Console.WriteLine("Сколько у вас гривен");
             float myUAH = Convert.ToSingle(Console.ReadLine());
-
-
-
-
 
             do
             {
@@ -33,7 +29,6 @@ namespace ConsoleApp1
                 Console.WriteLine("Нажмите 6 чтобы перевести доллары в гривны");
                 Console.WriteLine("Напечатайте exit чтобы выйти из программы");
 
-
                 wayOfConvertation = Console.ReadLine();
                 if (wayOfConvertation == "exit")
                 {
@@ -43,20 +38,17 @@ namespace ConsoleApp1
                 {
                     switch (wayOfConvertation)
                     {
-
                         case "1":
                             Console.WriteLine("Сколько вы хотите перевести");
                             convertValue = Convert.ToInt32(Console.ReadLine());
                             if (convertValue > myRUB)
                             {
                                 Console.WriteLine("У вас слишком мало рублей для конвертации");
-
                             }
                             else
                             {
                                 myRUB -= convertValue;
-                                myUSD += convertValue / USDtoRUB;
-
+                                myUSD += convertValue / usdToRub;
                             }
                             break;
                         case "2":
@@ -65,12 +57,11 @@ namespace ConsoleApp1
                             if (convertValue > myUSD)
                             {
                                 Console.WriteLine("У вас слишком мало долларов для конвертации");
-
                             }
                             else
                             {
                                 myUSD -= convertValue;
-                                myRUB += convertValue * USDtoRUB;
+                                myRUB += convertValue * usdToRub;
                             }
                             break;
                         case "3":
@@ -79,12 +70,11 @@ namespace ConsoleApp1
                             if (convertValue > myRUB)
                             {
                                 Console.WriteLine("У вас слишком мало рублей для конвертации");
-
                             }
                             else
                             {
                                 myRUB -= convertValue;
-                                myUAH += convertValue / UAHtoRUB;
+                                myUAH += convertValue / uahToRub;
                             }
                             break;
                         case "4":
@@ -93,12 +83,11 @@ namespace ConsoleApp1
                             if (convertValue > myUAH)
                             {
                                 Console.WriteLine("У вас слишком мало гривен для конвертации");
-
                             }
                             else
                             {
                                 myUAH -= convertValue;
-                                myRUB += convertValue * UAHtoRUB;
+                                myRUB += convertValue * uahToRub;
                             }
                             break;
                         case "5":
@@ -107,12 +96,11 @@ namespace ConsoleApp1
                             if (convertValue > myUAH)
                             {
                                 Console.WriteLine("У вас слишком мало гривен для конвертации");
-
                             }
                             else
                             {
                                 myUAH -= convertValue;
-                                myUSD += convertValue / USDtoUAH;
+                                myUSD += convertValue / usdToUah;
                             }
                             break;
                         case "6":
@@ -121,30 +109,22 @@ namespace ConsoleApp1
                             if (convertValue > myUSD)
                             {
                                 Console.WriteLine("У вас слишком мало долларов для конвертации");
-                                break;
                             }
                             else
                             {
                                 myUSD -= convertValue;
-                                myUAH += convertValue * USDtoUAH;
+                                myUAH += convertValue * usdToUah;
                             }
                             break;
-
-
                         default:
                             Console.WriteLine("Вы выбрали хотите переводить что-то не то :) ");
                             break;
-
                     }
                     Console.WriteLine($"На ваших кошельках отсалось: {myRUB} рублей, {myUSD} долларов, {myUAH} гривен.");
                     Console.ReadLine();
                 }
-
-
             }
             while (wayOfConvertation != "exit");
-            
-
         }
     }
 }
