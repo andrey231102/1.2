@@ -6,10 +6,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string userName;
+            string userName = "";
             string consoleColor;
-            string userPassword;
-            string passwordConfirm;
+            string userPassword = "";
+            string userInput;
+            int year;
+
             Console.WriteLine("Напишите в консоль нужную вам из предоставленных команд");
             Console.WriteLine();
             Console.WriteLine();
@@ -17,57 +19,104 @@ namespace ConsoleApp1
             Console.WriteLine("ChangeConsoleColor- изменить цвет консоли");
             Console.WriteLine("SetPassword – установить пароль;");
             Console.WriteLine("WriteName – вывести имя (после ввода пароля)");
+            Console.WriteLine("IsItLeapYear - проверка является ли год високосным");
             Console.WriteLine("Esc – выход из программы");
 
-            string userInput = Console.ReadLine();
-
-            switch (userInput)
+            do
             {
-                case "SetName":
-                    Console.WriteLine("Введите свое имя");
-                    userName = Console.ReadLine();
-                    Console.WriteLine($"Привет, {userName}") ;
-                    break;
-                case "ChangeConsoleColor":
-                    Console.WriteLine("Укажите номер одного из нужного(или тот который вам макисмально нравиться) вам цветов для консоли");
-                    Console.WriteLine("1.Желтый. 2. Зеленый. 3.Красный 4.Синий ");
-                    consoleColor = Console.ReadLine();
-                    switch (consoleColor)
-                    {
-                        case "1":
-                            Console.BackgroundColor = ConsoleColor.Yellow;
-                            break;
-                        case "2":
-                            Console.BackgroundColor = ConsoleColor.Green;
-                            break;
-                        case "3":
-                            Console.BackgroundColor = ConsoleColor.Red;
-                            break;
-                        case "4":
-                            Console.BackgroundColor = ConsoleColor.DarkBlue;
-                            break;
-                        default:
-                            Console.WriteLine("Вы указали номер неизвестного цвета либо попытались оскорбить разработчика =)");
-                            break;
-                    }
-                    break;
-                case "SetPassword":
-                    Console.WriteLine("Вводите пароль");
-                    userPassword = Console.ReadLine();
-                    Console.WriteLine("Пароль сохранен, не забудьте его");
-                    break;
-                case "WriteName":
-                    Console.WriteLine("Для подтверждения действия введите пароль");
-                    passwordConfirm = Console.ReadLine();
-                    if ()//как мне задать условие: Если у userName есть значение, то....
-                    {
+                userInput = Console.ReadLine();
 
-                    }
-                    break;
-
-                default:
-                    break;
+                switch (userInput)
+                {
+                    case "SetName":
+                        Console.WriteLine("Введите свое имя");
+                        userName = Console.ReadLine();
+                        Console.WriteLine($"Привет, {userName}");
+                        Console.WriteLine("Введите следующую команду");
+                        break;
+                    case "ChangeConsoleColor":
+                        Console.WriteLine("Укажите номер одного из нужного(или тот который вам макисмально нравиться) вам цветов для строк");
+                        Console.WriteLine("1.Желтый. 2. Зеленый. 3.Красный 4.Синий ");
+                        consoleColor = Console.ReadLine();
+                        switch (consoleColor)
+                        {
+                            case "1":
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Цвет строк изменен. Введите следующую команду");
+                                break;
+                            case "2":
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Цвет строк изменен. Введите следующую команду");
+                                break;
+                            case "3":
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Цвет строк изменен. Введите следующую команду");
+                                break;
+                            case "4":
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.WriteLine("Цвет строк изменен. Введите следующую команду");
+                                break;
+                            case "5":
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.WriteLine("Цвет строк изменен. Введите следующую команду");
+                                break;
+                            default:
+                                Console.WriteLine("Вы указали номер неизвестного цвета либо попытались оскорбить разработчика =)");
+                                Console.WriteLine("Введите следующую команду");
+                                break;
+                        }
+                        break;
+                    case "SetPassword":
+                        Console.WriteLine("Вводите пароль");
+                        userPassword = Console.ReadLine();
+                        Console.WriteLine("Пароль сохранен, не забудьте его. Введите следующую команду");
+                        break;
+                    case "WriteName":
+                        if (userName == "")
+                        {
+                            Console.WriteLine("Вам нужно ввести сначала свое имя, сделайте это сейчас. Введите соответствующую команду ");
+                            
+                        }
+                        else if (userPassword == "")
+                        {
+                            Console.WriteLine("Вы не придумали для своего профиля пароль, сделайте это сейчас. Введите соответствующую команду");                         
+                        }
+                        else
+                        {
+                            Console.WriteLine("Данная команда требует подтверждения. Введите пароль");
+                            string passSecurity = Console.ReadLine();
+                            if (passSecurity == userPassword)
+                            {
+                                Console.WriteLine($"Имя пользователя - {userName}");
+                                Console.WriteLine("Введите следующую команду");
+                            }
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Эта программа пока не может обрабатывать такие запросы"); 
+                        Console.WriteLine("Введите следующую команду");
+                        break;
+                    case "IsItLeapYear":
+                        Console.WriteLine("Введите год");
+                        year = Convert.ToInt32(Console.ReadLine());
+                        if (year % 2 == 0)
+                        {
+                            Console.WriteLine($"{year} год - високосный");
+                            Console.WriteLine("Введите следующую команду");
+                        }
+                        else if (year % 2 != 0)
+                        {
+                            Console.WriteLine($"{year} год невисокосный");
+                            Console.WriteLine("Введите следующую команду");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Произошла ошибка при вводе, введите следующую команду");
+                        }
+                        break;
+                }
             }
+            while (userInput != "Esc");
 
         }
     }
