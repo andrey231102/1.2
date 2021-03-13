@@ -91,11 +91,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Введите следующую команду");
                             }
                         }
-                        break;
-                    default:
-                        Console.WriteLine("Эта программа пока не может обрабатывать такие запросы"); 
-                        Console.WriteLine("Введите следующую команду");
-                        break;
+                        break;                
                     case "IsItLeapYear":
                         Console.WriteLine("Введите год");
                         year = Convert.ToInt32(Console.ReadLine());
@@ -113,6 +109,13 @@ namespace ConsoleApp1
                         {
                             Console.WriteLine("Произошла ошибка при вводе, введите следующую команду");
                         }
+                        break;
+                    case "Esc":
+                        Console.WriteLine("Пользователь покинул чат");
+                        break;
+                    default:
+                        Console.WriteLine("Эта программа пока не может обрабатывать такие запросы");
+                        Console.WriteLine("Введите следующую команду");
                         break;
                 }
             }
