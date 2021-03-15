@@ -6,46 +6,46 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
+            Random random = new Random();
             int playerHealth = 250;
             int bossHealth = 500;
             int demonHealth = 0;
-            int demonCount = 0;
+            int demonsCount = 0;
             int manaCount = 0;
+            int spellCost = 10;
             string userInput;
-          
+
             Console.WriteLine("У вашего героя есть 4 способности");
             Console.WriteLine("1. Рашамон - призывает духа, который наносит 100 урона врагу, сам жe демон будем впитывать весь урон ");
             Console.WriteLine("2. Хуганзакура - вы наносите 100 урона врагу и восстановите 100 хп вашему демону(только если вы уже призвали духа)");
             Console.WriteLine("3. Хил - восстанавливает вам здоровье в количестве хп демона, но убивает демона ");
             Console.WriteLine("4. Если демон живой, то вы превращаете его в ману, во время хода вы неуязвимы . Если вы накопите 5 маны, то сможете избавится от зла раз и навсегда)");
-
             do
             {
-                int bossAttack = rnd.Next(80, 150);
+                int bossAttack = random.Next(80, 150);
                 Console.WriteLine("Ваш ход, выберите номер способность");
                 userInput = Console.ReadLine();
                 switch (userInput)
                 {
                     case "1":
-                        demonCount++;
-                        if (demonCount >= 2)
+                        demonsCount++;
+                        if (demonsCount >= 2)
                         {
                             Console.WriteLine("1 демон это предел для такого падавана как вы, а 2 демона это уже слишком ");
-                            demonCount--;
+                            demonsCount--;
                         }
                         else
                         {
                             Console.WriteLine("Вы призвали демона и он делает свою работу");
-                            demonHealth = rnd.Next(50, 200);
+                            demonHealth = random.Next(50, 200);
                             bossHealth -= 20;
                             demonHealth -= bossAttack;
                             Console.WriteLine($"Ваш слуга принял удар на себя. У него осталось {demonHealth}");
-                            Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         }
+                        Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         break;
                     case "2":
-                        if (demonCount == 1)
+                        if (demonsCount == 1)
                         {
                             bossHealth -= 100;
                             demonHealth += 100;
@@ -55,41 +55,39 @@ namespace ConsoleApp1
                             if (demonHealth <= 0)
                             {
                                 Console.WriteLine("Ваш слуга умер");
-                                demonCount--;
+                                demonsCount--;
                             }
-                            Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         }
                         else
                         {
                             Console.WriteLine("У вас нету демона, вот и получили по голове");
                             playerHealth -= bossAttack;
-                            Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         }
+                        Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         break;
                     case "3":
-                        if (demonCount == 1)
+                        if (demonsCount == 1)
                         {
                             Console.WriteLine("Вы восстановили хп ценой существования вашего слуги, но босс наносит вам удар");
                             playerHealth += demonHealth - bossAttack;
-                            demonCount--;
-                            Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
+                            demonsCount--;
                         }
                         else
                         {
                             Console.WriteLine("Нету слуг, вы пропускаете ход");
                             playerHealth -= bossAttack;
-                            Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         }
+                        Console.WriteLine($"Хп босса:{bossHealth}, хп игрока:{playerHealth}");
                         break;
                     case "4":
-                        if (manaCount != 10 && demonCount == 1)
+                        if (manaCount != spellCost && demonsCount == 1)
                         {
                             manaCount++;
-                            demonCount--;
+                            demonsCount--;
                             Console.WriteLine("призовете еще одного, не беда");
-                            Console.WriteLine($"У вас {manaCount} маны, осталось " + (10 - manaCount) + "  маны и ваш враг падет");
+                            Console.WriteLine($"У вас {manaCount} маны, осталось " + (spellCost - manaCount) + "  маны и ваш враг падет");
                         }
-                        
+
                         else
                         {
                             Console.WriteLine("Вы где-то прощитались, потому условие что вы не получите урона не работает");
@@ -101,8 +99,8 @@ namespace ConsoleApp1
                         break;
                 }
             }
-            while (playerHealth >= 0 && bossHealth >= 0 && manaCount != 10);
-            if (bossHealth <= 0 || manaCount == 10)
+            while (playerHealth >= 0 && bossHealth >= 0 && manaCount != spellCost);
+            if (bossHealth <= 0 || manaCount == spellCost)
             {
                 Console.WriteLine("Вы одолели зло, в награду вы получаете славу, деньги и женщин");
             }
